@@ -1,17 +1,18 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	1
+Release:	2
 License:	MIT / GPL
 Group:		Applications/WWW
-Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox-compressed.js
-# Source0-md5:	62ecf3e9b248f69a043ca7653866b146
+Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
+# Source0-md5:	1ef1a46c2b1b984cdc3332eb74bad1d5
 Source1:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.css
 # Source1-md5:	9b2903ebee6d54b3e63ba927ea5dd498
 Source2:	http://jquery.com/demo/thickbox/images/loadingAnimation.gif
 # Source2-md5:	c33734a1bf58bec328ffa27872e96ae1
 URL:		http://jquery.com/demo/thickbox/
 Patch0:		no-global-css.patch
+Patch1:		no-doctype.patch
 BuildRequires:	rpmbuild(macros) > 1.268
 BuildRequires:	yuicompressor
 Requires:	jquery
@@ -33,10 +34,11 @@ AJAX in a hybrid modal.
 
 %prep
 %setup -qcT
-cp -a %{SOURCE0} thickbox.js
+cp -a %{SOURCE0} .
 cp -a %{SOURCE1} .
 cp -a %{SOURCE2} .
 %patch0 -p1
+%patch1 -p0
 
 # apache1/apache2 conf
 cat > apache.conf <<'EOF'

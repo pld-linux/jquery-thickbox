@@ -1,0 +1,29 @@
+--- thickbox.js.orig	2008-10-21 22:21:05.000000000 +0300
++++ thickbox.js	2009-09-29 14:20:41.592474178 +0300
+@@ -31,7 +31,7 @@
+ function tb_show(caption, url, imageGroup) {//function called when the user clicks on a thickbox link
+ 
+ 	try {
+-		if (typeof document.body.style.maxHeight === "undefined") {//if IE 6
++		if (!document.body.style.maxHeight && document.documentElement.clientHeight) {//if IE 6 with doctype
+ 			$("body","html").css({height: "100%", width: "100%"});
+ 			$("html").css("overflow","hidden");
+ 			if (document.getElementById("TB_HideSelect") === null) {//iframe to hide select elements in ie6
+@@ -270,7 +270,7 @@
+ 	$("#TB_closeWindowButton").unbind("click");
+ 	$("#TB_window").fadeOut("fast",function(){$('#TB_window,#TB_overlay,#TB_HideSelect').trigger("unload").unbind().remove();});
+ 	$("#TB_load").remove();
+-	if (typeof document.body.style.maxHeight == "undefined") {//if IE 6
++	if (!document.body.style.maxHeight && document.documentElement.clientHeight) {//if IE 6 with doctype
+ 		$("body","html").css({height: "auto", width: "auto"});
+ 		$("html").css("overflow","");
+ 	}
+@@ -281,7 +281,7 @@
+ 
+ function tb_position() {
+ $("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
+-	if ( !(jQuery.browser.msie && jQuery.browser.version < 7)) { // take away IE6
++	if (document.documentElement && document.documentElement.clientHeight && navigator.userAgent.indexOf("MSIE 6") === -1) { // take away IE6 && quirks mode
+ 		$("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
+ 	}
+ }
