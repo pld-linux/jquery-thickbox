@@ -1,0 +1,11 @@
+--- jquery-thickbox/thickbox.js~	2008-10-21 22:21:05.000000000 +0300
++++ jquery-thickbox/thickbox.js	2009-09-30 16:09:40.886477061 +0300
+@@ -5,7 +5,7 @@
+  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
+ */
+ 		  
+-var tb_pathToImage = "images/loadingAnimation.gif";
++var tb_pathToImage = "/js/thickbox/loadingAnimation.gif";
+ 
+ /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
+ 

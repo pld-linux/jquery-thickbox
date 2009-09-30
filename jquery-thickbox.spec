@@ -13,6 +13,7 @@ Source2:	http://jquery.com/demo/thickbox/images/loadingAnimation.gif
 URL:		http://jquery.com/demo/thickbox/
 Patch0:		no-global-css.patch
 Patch1:		no-doctype.patch
+Patch2:		animation-url.patch
 BuildRequires:	rpmbuild(macros) > 1.268
 BuildRequires:	yuicompressor
 Requires:	jquery
@@ -39,6 +40,7 @@ cp -a %{SOURCE1} .
 cp -a %{SOURCE2} .
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
 
 # apache1/apache2 conf
 cat > apache.conf <<'EOF'
@@ -68,7 +70,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}}
-cp -a *.js *.css $RPM_BUILD_ROOT%{_appdir}
+cp -a *.js *.css *.gif $RPM_BUILD_ROOT%{_appdir}
 
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
