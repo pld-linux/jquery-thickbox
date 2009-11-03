@@ -7,10 +7,10 @@
 +
 +		// Hide some things, because they peek trough
 +		$('select, iframe, object').css({ 'visibility' : 'hidden' });
-+		// and stil show our result flashes
-+		embeds = document.getElementsByTagName("embed");
++		// and still show our result flashes
++		var i, embeds = document.getElementsByTagName("embed");
 +		for (i = 0; i != embeds.length; i++) {
-+			if(embeds[i]['id'] != 'ampie'){
++			if (embeds[i]['id'] != 'ampie') {
 +				embeds[i].style.visibility = "hidden";
 +			} else {
 +				embeds[i].style.visibility = "";
@@ -18,7 +18,7 @@
 +		}
 +		embeds = document.getElementsByTagName("object");
 +		for (i = 0; i != embeds.length; i++) {
-+			if(embeds[i]['id'] != 'ampie'){
++			if (embeds[i]['id'] != 'ampie') {
 +				embeds[i].style.visibility = "hidden";
 +			} else {
 +				embeds[i].style.visibility = "";
