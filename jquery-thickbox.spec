@@ -1,7 +1,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	2
+Release:	3
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -14,6 +14,7 @@ URL:		http://jquery.com/demo/thickbox/
 Patch0:		no-global-css.patch
 Patch1:		no-doctype.patch
 Patch2:		animation-url.patch
+Patch3:		hide-peek-trough-obj.patch
 BuildRequires:	rpmbuild(macros) > 1.268
 BuildRequires:	yuicompressor
 Requires:	jquery
@@ -41,6 +42,7 @@ cp -a %{SOURCE2} .
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
+%patch3 -p0
 
 # apache1/apache2 conf
 cat > apache.conf <<'EOF'
