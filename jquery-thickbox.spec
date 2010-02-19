@@ -69,6 +69,11 @@ for a in *.css; do
 	mv tmp $a
 done
 
+tarball=%{_sourcedir}/%{name}-%{version}-%{release}.tar.bz2
+tar cjf $tarball *
+%{_topdir}/dropin $tarball
+exit 1
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}}
