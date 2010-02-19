@@ -10,7 +10,6 @@ Source0:	%{name}-%{version}-3.tar.bz2
 # Source0-md5:	8663d44ddae212bb95a4656383b35143
 URL:		http://jquery.com/demo/thickbox/
 BuildRequires:	rpmbuild(macros) > 1.268
-BuildRequires:	yuicompressor
 Requires:	jquery
 Requires:	webapps
 Requires:	webserver(alias)
