@@ -6,7 +6,7 @@ Version:	3.1
 Release:	5
 License:	MIT / GPL
 Group:		Applications/WWW
-Source0:	%{name}-%{version}-%{release}.tar.bz2
+Source0:	%{name}-%{version}-5.tar.bz2
 # Source0-md5:	5839e5e9f75d2df30aa7aeb191d4999e
 URL:		http://jquery.com/demo/thickbox/
 BuildRequires:	rpmbuild(macros) > 1.268
