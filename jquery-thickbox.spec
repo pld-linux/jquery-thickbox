@@ -3,7 +3,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	6
+Release:	7
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	%{name}-%{version}-6.tar.bz2
@@ -33,7 +33,7 @@ AJAX in a hybrid modal.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}}
-cp -a *.js *.css *.gif $RPM_BUILD_ROOT%{_appdir}
+cp -a *.js *.css *.gif *.png $RPM_BUILD_ROOT%{_appdir}
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 cp -a lighttpd.conf $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
