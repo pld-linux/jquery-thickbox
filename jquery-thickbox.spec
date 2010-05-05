@@ -1,7 +1,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	6
+Release:	8
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -18,6 +18,7 @@ Patch1:		no-doctype.patch
 Patch2:		animation-url.patch
 Patch3:		hide-peek-trough-obj.patch
 Patch4:		translation.patch
+BuildRequires:	js
 BuildRequires:	rpmbuild(macros) > 1.268
 BuildRequires:	yuicompressor
 Requires:	jquery
@@ -68,6 +69,7 @@ EOF
 for a in *.js; do
 	yuicompressor --charset UTF-8 --type js $a -o tmp
 	mv tmp $a
+	js -C -f $a
 done
 for a in *.css; do
 	yuicompressor --charset UTF-8 --type css $a -o tmp
