@@ -66,25 +66,20 @@ alias.url += (
 EOF
 
 %build
-for a in *.js; do
-	yuicompressor --charset UTF-8 --type js $a -o tmp
-	mv tmp $a
-	js -C -f $a
+install -d build
+for js in *.js; do
+	yuicompressor --charset UTF-8 --type js $js -o build/$js
+	js -C -f build/$a
 done
-for a in *.css; do
-	yuicompressor --charset UTF-8 --type css $a -o tmp
-	mv tmp $a
+for css in *.css; do
+	yuicompressor --charset UTF-8 --type css $css -o build/$css
 done
-
-tarball=%{_sourcedir}/%{name}-%{version}-%{release}.tar.bz2
-tar cjf $tarball *
-%{_topdir}/dropin $tarball
-exit 1
+cp -a *.gif *.png build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}}
-cp -a *.js *.css *.gif *.png $RPM_BUILD_ROOT%{_appdir}
+cp -a build/* $RPM_BUILD_ROOT%{_appdir}
 
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
