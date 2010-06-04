@@ -3,7 +3,7 @@
 @@ -6,7 +6,8 @@
  */
  		  
- var tb_pathToImage = "/js/thickbox/loadingAnimation.gif";
+ var tb_pathToImage = "loadingAnimation.gif";
 -
 +var tb_closeButton = 'Close';
 +var tb_closeMsg = 'Close';
