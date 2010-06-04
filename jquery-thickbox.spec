@@ -9,7 +9,7 @@ Group:		Applications/WWW
 Source0:	%{name}-%{version}-8.tar.bz2
 # Source0-md5:	a48ab071d8b2c118fa2d2a609551b6fd
 URL:		http://jquery.com/demo/thickbox/
-BuildRequires:	rpmbuild(macros) > 1.268
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	jquery
 Requires:	webapps
 Requires:	webserver(alias)
