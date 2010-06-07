@@ -5,7 +5,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	9
+Release:	10
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -53,7 +53,7 @@ cp -a %{SOURCE3} .
 %patch1 -p0
 %patch2 -p1
 %patch3 -p0
-%patch4 -p0
+%patch4 -p1
 
 # Apache 1.3 / Apache 2.x config
 cat > apache.conf <<'EOF'
@@ -72,6 +72,7 @@ EOF
 
 %build
 install -d build
+%if 0%{!?debug:1}
 for js in *.js; do
 	yuicompressor --charset UTF-8 --type js $js -o build/$js
 	js -C -f build/$a
@@ -79,6 +80,9 @@ done
 for css in *.css; do
 	yuicompressor --charset UTF-8 --type css $css -o build/$css
 done
+%else
+cp -a *.js *.css build
+%endif
 cp -a *.gif *.png build
 
 %install

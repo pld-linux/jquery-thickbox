@@ -1,11 +1,39 @@
---- jquery-thickbox/thickbox.js~	2008-10-21 22:21:05.000000000 +0300
-+++ jquery-thickbox/thickbox.js	2009-09-30 16:09:40.886477061 +0300
-@@ -5,7 +5,7 @@
+--- jquery-thickbox-3.1/thickbox.css	2010-06-07 13:47:37.540648952 +0300
++++ thickbox/thickbox.css	2010-06-07 13:46:40.297138036 +0300
+@@ -36,6 +36,7 @@
+ 	height:100%;
+ 	width:100%;
+ }
++#TB_LoadingAnimation {background: url(loadingAnimation.gif); width: 208px; height: 13px;}
+ 
+ .TB_overlayMacFFBGHack {background: url(macFFBgHack.png) repeat;}
+ .TB_overlayBG {
+--- jquery-thickbox-3.1/thickbox.js~	2010-06-07 13:52:32.533999937 +0300
++++ jquery-thickbox-3.1/thickbox.js	2010-06-07 13:52:41.353764470 +0300
+@@ -4,8 +4,6 @@
+  * Copyright (c) 2007 cody lindley
   * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 		  
+-		  
 -var tb_pathToImage = "images/loadingAnimation.gif";
-+var tb_pathToImage = "loadingAnimation.gif";
  
  /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
  
+@@ -13,8 +12,6 @@
+ //on page load call tb_init
+ $(document).ready(function(){   
+ 	tb_init('a.thickbox, area.thickbox, input.thickbox');//pass where to apply thickbox
+-	imgLoader = new Image();// preload image
+-	imgLoader.src = tb_pathToImage;
+ });
+ 
+ //add thickbox to href & area elements that have a class of .thickbox
+@@ -74,7 +71,7 @@
+ 		}
+ 		
+ 		if(caption===null){caption="";}
+-		$("body").append("<div id='TB_load'><img src='"+imgLoader.src+"' /></div>");//add loader to the page
++		$("body").append("<div id='TB_load'><div id='TB_LoadingAnimation'>&nbsp;</div></div>");//add loader to the page
+ 		$('#TB_load').show();//show loader
+ 		
+ 		var baseURL;

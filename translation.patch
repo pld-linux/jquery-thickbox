@@ -1,12 +1,12 @@
---- thickbox.js~	2010-05-05 15:24:43.823429470 +0300
-+++ thickbox.js	2010-05-05 15:27:38.426379283 +0300
-@@ -6,7 +6,8 @@
+--- jquery-thickbox-3.1/thickbox.js~	2010-06-07 13:53:01.554992587 +0300
++++ jquery-thickbox-3.1/thickbox.js	2010-06-07 13:53:17.823953739 +0300
+@@ -5,6 +5,9 @@
+  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 		  
- var tb_pathToImage = "loadingAnimation.gif";
--
+ 
 +var tb_closeButton = 'Close';
 +var tb_closeMsg = 'Close';
++
  /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
  
  //on page load call tb_init
