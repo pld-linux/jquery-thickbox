@@ -5,7 +5,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	10
+Release:	11
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -22,6 +22,7 @@ Patch1:		no-doctype.patch
 Patch2:		animation-url.patch
 Patch3:		hide-peek-trough-obj.patch
 Patch4:		translation.patch
+Patch5:		forminput-contents.patch
 BuildRequires:	js
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	yuicompressor
@@ -54,6 +55,7 @@ cp -a %{SOURCE3} .
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%patch5 -p1
 
 # Apache 1.3 / Apache 2.x config
 cat > apache.conf <<'EOF'

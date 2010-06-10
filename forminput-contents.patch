@@ -1,0 +1,25 @@
+--- jquery-thickbox-3.1/thickbox.js~	2010-06-10 15:17:03.061497743 +0300
++++ jquery-thickbox-3.1/thickbox.js	2010-06-10 15:16:25.310662166 +0300
+@@ -236,11 +236,17 @@
+ 					
+ 			$("#TB_closeWindowButton").click(tb_remove);
+ 			
+-				if(url.indexOf('TB_inline') != -1){	
+-					$("#TB_ajaxContent").append($('#' + params['inlineId']).children());
+-					$("#TB_window").unload(function () {
+-						$('#' + params['inlineId']).append( $("#TB_ajaxContent").children() ); // move elements back when you're finished
+-					});
++				if(url.indexOf('TB_inline') != -1){
++					var el = $('#' + params['inlineId']);
++					// if inline element is actually form element, take it's value
++					if (/textarea|input|select/.test(el[0].nodeName.toLowerCase())) {
++						$("#TB_ajaxContent").html('<center>'+el.val()+'</center>');
++					} else {
++						$("#TB_ajaxContent").append(el.children());
++						$("#TB_window").unload(function () {
++							$('#' + params['inlineId']).append( $("#TB_ajaxContent").children() ); // move elements back when you're finished
++						});
++					}
+ 					tb_position();
+ 					$("#TB_load").remove();
+ 					$("#TB_window").css({display:"block"}); 
