@@ -25,7 +25,7 @@
 +			}
 +		}
 +
- 		if (!document.body.style.maxHeight && document.documentElement.clientHeight) {//if IE 6 with doctype
+		if (!document.body.style.maxHeight && document.documentElement.clientHeight && navigator.userAgent.indexOf("MSIE") !== -1) {//if IE 6 with doctype
  			$("body","html").css({height: "100%", width: "100%"});
  			$("html").css("overflow","hidden");
 @@ -276,6 +297,8 @@
