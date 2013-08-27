@@ -5,7 +5,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	12
+Release:	14
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -61,7 +61,15 @@ cp -a %{SOURCE3} .
 cat > apache.conf <<'EOF'
 Alias /js/thickbox %{_appdir}
 <Directory %{_appdir}>
-	Allow from all
+	# Apache 2.x
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Allow from all
+	</IfModule>
+	# Apache 2.4
+	<IfModule mod_authz_core.c>
+		Require all granted
+	</IfModule>
 </Directory>
 EOF
 
