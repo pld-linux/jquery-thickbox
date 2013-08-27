@@ -5,7 +5,7 @@
 Summary:	ThickBox
 Name:		jquery-thickbox
 Version:	3.1
-Release:	13
+Release:	12
 License:	MIT / GPL
 Group:		Applications/WWW
 Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
@@ -29,7 +29,6 @@ BuildRequires:	yuicompressor
 Requires:	jquery >= 1.2.6-2
 Requires:	webapps
 Requires:	webserver(alias)
-Conflicts:	apache-base < 2.4.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,19 +57,11 @@ cp -a %{SOURCE3} .
 %patch4 -p1
 %patch5 -p1
 
-# Apache 1.3
+# Apache 1.3 / Apache 2.x config
 cat > apache.conf <<'EOF'
 Alias /js/thickbox %{_appdir}
 <Directory %{_appdir}>
 	Allow from all
-</Directory>
-EOF
-
-# Apache 2.4 config
-cat > httpd.conf <<'EOF'
-Alias /js/thickbox %{_appdir}
-<Directory %{_appdir}>
-	Require all granted
 </Directory>
 EOF
 
@@ -104,7 +95,7 @@ cp -a build/* $RPM_BUILD_ROOT%{_appdir}
 %if %{with legacy}
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_legacydir}}
 cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
-cp -a httpd.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+cp -a apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 cp -a lighttpd.conf $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
 for a in $RPM_BUILD_ROOT%{_appdir}/*; do
 	ln -s %{_appdir}/$(basename $a) $RPM_BUILD_ROOT%{_legacydir}
@@ -121,10 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- apache1 < 1.3.37-3, apache1-base
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache-base
+%triggerin -- apache < 2.2.0, apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache-base
+%triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
 
 %triggerin -- lighttpd
