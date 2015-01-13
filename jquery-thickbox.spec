@@ -8,15 +8,15 @@ Version:	3.1
 Release:	14
 License:	MIT / GPL
 Group:		Applications/WWW
-Source0:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.js
+Source0:	http://codylindley.com/thickbox/thickbox-code/thickbox.js
 # Source0-md5:	1ef1a46c2b1b984cdc3332eb74bad1d5
-Source1:	http://jquery.com/demo/thickbox/thickbox-code/thickbox.css
+Source1:	http://codylindley.com/thickbox/thickbox-code/thickbox.css
 # Source1-md5:	9b2903ebee6d54b3e63ba927ea5dd498
-Source2:	http://jquery.com/demo/thickbox/images/loadingAnimation.gif
+Source2:	http://codylindley.com/thickbox/images/loadingAnimation.gif
 # Source2-md5:	c33734a1bf58bec328ffa27872e96ae1
-Source3:	http://jquery.com/demo/thickbox/images/macFFBgHack.png
+Source3:	http://codylindley.com/thickbox/images/macFFBgHack.png
 # Source3-md5:	6e63d8058c61e28953cc285de8d5c37d
-URL:		http://jquery.com/demo/thickbox/
+URL:		http://codylindley.com/thickbox/
 Patch0:		no-global-css.patch
 Patch1:		no-doctype.patch
 Patch2:		animation-url.patch
